@@ -1,0 +1,26 @@
+[
+  {
+    "title": "1by25cs072",
+    "description": "PDF Document",
+    "fileType": "PDF",
+    "filePath": "docs/1by25cs072 (1).pdf"
+  },
+  {
+    "title": "bibek",
+    "description": "Excel Spreadsheet",
+    "fileType": "XLSX",
+    "filePath": "docs/bibek.xlsx"
+  },
+  {
+    "title": "BIBEK",
+    "description": "Excel Spreadsheet",
+    "fileType": "XLSX",
+    "filePath": "docs/BIBEK.xlsx"
+  },
+  {
+    "title": "Manaswi Raj",
+    "description": "PDF Document",
+    "fileType": "PDF",
+    "filePath": "docs/Manaswi Raj.pdf"
+  }
+]

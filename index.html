@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyVault — Document Library</title>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!--
+    ============================================================
+    STUDYVAULT — Static Document Library for GitHub Pages
+    ============================================================
+    A lightweight, responsive document library with:
+    - JSON-driven content (no backend needed)
+    - Real-time search filtering
+    - Category-based filtering
+    - File type badges
+    - View & Download buttons
+    - Fully responsive card-based UI
+
+    To add new documents:
+    1. Place your file in the /docs/ folder
+    2. Add an entry to documents.json with:
+    - title, description, fileType, filePath, category, date
+    3. Commit & push — the site updates automatically on GitHub Pages
+    ============================================================
+    -->
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <!-- Logo / Icon -->
+            <div class="logo-area">
+                <span class="logo-icon" aria-hidden="true">📚</span>
+                <h1 class="site-title">StudyVault</h1>
+            </div>
+            <p class="site-description">
+                Your personal library for notes, PDFs, presentations, and study materials.
+                Upload files to the <code>/docs</code> folder, update the JSON, and you're set.
+            </p>
+
+            <!-- Search bar -->
+            <div class="search-wrapper" role="search">
+                <span class="search-icon" aria-hidden="true">🔍</span>
+                <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search documents by title or description..."
+                aria-label="Search documents"
+                autocomplete="off"
+                >
+                <button
+                id="clearSearch"
+                class="clear-search-btn"
+                aria-label="Clear search"
+                title="Clear search"
+                type="button"
+                >
+                ✕
+            </button>
+        </div>
+
+        <!-- Document count -->
+        <p class="doc-count" id="docCount" aria-live="polite">Loading documents…</p>
+    </div>
+</header>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<main class="site-main" role="main">
+    <!-- Category filter pills -->
+    <nav class="category-filters" id="categoryFilters" aria-label="Filter by category">
+        <!-- Populated by JavaScript -->
+    </nav>
+
+    <!-- Document grid -->
+    <section class="document-grid" id="documentGrid" aria-label="Document list">
+        <!-- Populated by JavaScript -->
+        <!-- Loading state is shown initially -->
+        <div class="loading-state" id="loadingState">
+            <div class="loading-spinner" aria-hidden="true"></div>
+            <p>Loading documents…</p>
+        </div>
+    </section>
+
+    <!-- Empty state (hidden by default) -->
+    <div class="empty-state" id="emptyState" style="display: none;" role="status">
+        <span class="empty-icon" aria-hidden="true">📭</span>
+        <h2>No documents found</h2>
+        <p>Try adjusting your search terms or clearing the filters.</p>
+        <button class="btn-reset" id="btnResetFilters" type="button">Reset All Filters</button>
+    </div>
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer" role="contentinfo">
+    <p>
+        📖 <strong>StudyVault</strong> — Static Document Library &nbsp;|&nbsp;
+        Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+        &nbsp;|&nbsp; Add files to <code>/docs</code> &amp; update <code>documents.json</code>
+    </p>
+</footer>
+
+<!-- Link to external JavaScript (loads after DOM is ready) -->
+<script src="script.js"></script>
+</body>
+</html>

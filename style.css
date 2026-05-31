@@ -1,0 +1,396 @@
+/* ============================================================
+   STUDYVAULT - CSS
+   A clean, modern design for a static document library.
+   ============================================================ */
+
+/* ---------- CSS Variables (easy to tweak) ---------- */
+:root {
+    --color-bg: #f9fafb;
+    --color-surface: #ffffff;
+    --color-text: #1f2937;
+    --color-text-secondary: #6b7280;
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-border: #e5e7eb;
+    --color-badge-pdf: #dc2626;
+    --color-badge-docx: #2563eb;
+    --color-badge-ppt: #ea580c;
+    --color-badge-txt: #6b7280;
+    --color-badge-default: #4b5563;
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-card-hover: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.02);
+    --radius: 12px;
+    --transition: 0.2s ease;
+}
+
+/* ---------- Reset & Base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+}
+
+.site-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--color-text);
+}
+
+.site-description {
+    color: var(--color-text-secondary);
+    max-width: 700px;
+    margin: 0.25rem auto 1.5rem;
+    font-size: 0.95rem;
+}
+
+.site-description code {
+    background: #f3f4f6;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+/* ---------- Search ---------- */
+.search-wrapper {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.7rem 2.5rem 0.7rem 2.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 2rem;
+    font-size: 0.95rem;
+    background-color: var(--color-bg);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.search-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 0.2rem;
+    display: none; /* shown via JS when input not empty */
+    line-height: 1;
+    transition: color var(--transition);
+}
+
+.clear-search-btn:hover {
+    color: var(--color-text);
+}
+
+.clear-search-btn.visible {
+    display: block;
+}
+
+.doc-count {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin: 0.25rem 0 0;
+}
+
+/* ---------- Category Filters ---------- */
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem auto 1rem;
+    max-width: 1100px;
+    padding: 0 2rem;
+}
+
+.category-pill {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.category-pill:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.category-pill.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* ---------- Document Grid ---------- */
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 1rem auto 2rem;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+/* ---------- Card ---------- */
+.doc-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.doc-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.doc-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    word-break: break-word;
+}
+
+.file-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    color: white;
+    background: var(--color-badge-default);
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+/* Badge colors by file type */
+.file-badge.pdf { background: var(--color-badge-pdf); }
+.file-badge.docx { background: var(--color-badge-docx); }
+.file-badge.ppt, .file-badge.pptx { background: var(--color-badge-ppt); }
+.file-badge.txt, .file-badge.md { background: var(--color-badge-txt); }
+.file-badge.xlsx, .file-badge.csv { background: #059669; }
+.file-badge.zip { background: #7c3aed; }
+
+.doc-description {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1rem;
+    flex: 1;
+    line-height: 1.5;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+    flex-wrap: wrap;
+}
+
+.btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background var(--transition), transform var(--transition);
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+.btn-outline:hover {
+    background: var(--color-bg);
+    border-color: #cbd5e1;
+}
+
+/* ---------- Loading & Empty States ---------- */
+.loading-state {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: var(--color-text-secondary);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--color-border);
+    border-top: 4px solid var(--color-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-text-secondary);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.btn-reset {
+    margin-top: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background var(--transition);
+}
+
+.btn-reset:hover {
+    background: #f3f4f6;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+.site-footer a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+    .site-header {
+        padding: 1.2rem 1rem;
+    }
+
+    .document-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .category-filters {
+        padding: 0 1rem;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
